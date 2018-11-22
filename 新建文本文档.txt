@@ -1,0 +1,23 @@
+<li class="ui-form-item2 ">
+                                          <div class="account-wrapper">
+                                               <input class="i-text account-display" placeholder="邮箱地址/手机号码" maxlength="64" seed="accountWrapper-iText" smartracker="on">
+                                               <div class="ui-form-explain2"></div>
+                                          </div>
+                                          <div class="amount-wrapper">
+                                               <input class="i-text i-prize amount" placeholder="付款金额" name="amounts" seed="amountWrapper-amounts" smartracker="on">
+                                               <div class="ui-form-explain2"></div>
+                                          </div>
+                                          <a title="删除" seed="fkm_clear_account" class="ico ico-del"></a>
+                                          <input type="hidden" name="optEmails" value="">
+                                          <input type="hidden" name="realname" value="">
+                                          <input type="hidden" name="optUserIds" value="">
+                                                <div class="tip-angle t-warn">
+                                                <div class="tip-angle-container">
+                                                    <div class="tip-angle-content">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+                                    
