@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class alipay:
     def __init__(self):
         self.web = webdriver.Chrome( 'chromedriver')
-        #self.web.get('https://shenghuo.alipay.com/transfer/otmpay/fill.htm')
+        self.web.get('https://shenghuo.alipay.com/transfer/otmpay/fill.htm')
     def __del__(self):
         self.web.quit()
 
@@ -20,6 +20,30 @@ class alipay:
             wait.until( EC.visibility_of_element_located( (by, name) ) )
             return True
         except:
+            return False
+
+    def addPointer(self):
+        try:
+            self.web.find_element_by_class_name( 'add-pointer' ).click()  # 增加收款人
+            return True
+        except:
+            return  False
+
+    def fillManyTransfer(self, accounts, index):
+        try:
+            element = self.web.find_elements_by_class_name( 'ui-form-item2' )[index]
+            element.find_element_by_class_name( 'account-display' ).send_keys( accounts[1] )
+            element.find_element_by_class_name( 'amount' ).send_keys( accounts[2] )
+            time.sleep(0.5)
+
+            if element.find_element_by_class_name('"ui-form-explain2') != None:
+                element.find_element_by_class_name( 'account-display' ).clear()
+                element.find_element_by_class_name( 'amount' ).clear()
+                return False
+            else:
+                return True
+        except Exception as e:
+            print(e)
             return False
 
     def manyTransfer(self, accounts):
@@ -40,4 +64,6 @@ class alipay:
                 element.find_element_by_class_name('amount').send_keys(123)
         except Exception as e:
             print(e)
+
+
 

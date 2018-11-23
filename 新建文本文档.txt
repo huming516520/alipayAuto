@@ -1,10 +1,24 @@
+
+
+增加收款人 : class="add-pointer"
+关联多个联系人：class="ui-form-explain2">   
+账号金额表：class="ui-form-item2 "    获取这个list 
+账号输入框：<input class="i-text account-display"
+密码输入框：<input class="i-text i-prize amount"
+总金额：<span id="totalAmount">0.00</span>
+下一步按钮：<div id="submitBtn" class="ui-button ui-button-mblue">
+
+<div id="submitBtn" class="ui-button ui-button-mblue">
+                    <input class="ui-button-text" hidefocus="hidefocus" seed="fkm_button_nextstep_new" type="submit" value="下一步" tabindex="5">
+                </div>
+                
 <li class="ui-form-item2 ">
                                           <div class="account-wrapper">
-                                               <input class="i-text account-display" placeholder="邮箱地址/手机号码" maxlength="64" seed="accountWrapper-iText" smartracker="on">
+                                               <input class="i-text account-display" placeholder="邮箱地址/手机号码" maxlength="64" seed="accountWrapper-iTextT1" smartracker="on">
                                                <div class="ui-form-explain2"></div>
                                           </div>
                                           <div class="amount-wrapper">
-                                               <input class="i-text i-prize amount" placeholder="付款金额" name="amounts" seed="amountWrapper-amounts" smartracker="on">
+                                               <input class="i-text i-prize amount" placeholder="付款金额" name="amounts" seed="amountWrapper-amountsT1" smartracker="on">
                                                <div class="ui-form-explain2"></div>
                                           </div>
                                           <a title="删除" seed="fkm_clear_account" class="ico ico-del"></a>
@@ -18,6 +32,6 @@
                                                 </div>
                                             </div>
                                         </li>
-
-
-                                    
+                                                                                                                 </ul>                     
+<a id="addUser" class="add-pointer" seed="fkm_add_account">+增加收款人</a>
+<div class="ui-form-explain2">该手机号关联了多个账号，请使用<a href="https://shenghuo.alipay.com:443/send/payment/fill.htm?optEmail=18252548396">向一人付款</a></div>
