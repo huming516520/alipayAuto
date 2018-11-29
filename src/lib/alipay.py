@@ -24,24 +24,47 @@ class alipay:
 
     def addPointer(self):
         try:
+            self.waitElements( name='add-pointer', time=3000 )
             self.web.find_element_by_class_name( 'add-pointer' ).click()  # 增加收款人
             return True
         except:
             return  False
 
     def fillManyTransfer(self, accounts, index):
+        if index >= 20:
+            return
+        if index > 0:
+            index = index + 1
+        print('fillManyTransfer', accounts, index, len(self.web.find_elements_by_class_name( 'ui-form-item2' )))
         try:
-            element = self.web.find_elements_by_class_name( 'ui-form-item2' )[index]
-            element.find_element_by_class_name( 'account-display' ).send_keys( accounts[1] )
-            element.find_element_by_class_name( 'amount' ).send_keys( accounts[2] )
-            time.sleep(0.5)
+            if self.waitElements( name='ui-form-item2', time=3000 ):
+                elements = self.web.find_elements_by_class_name( 'ui-form-item2' )
+                #if (index + 5) >= len(elements):    #人不够，增加
+                self.addPointer()
+                element = self.web.find_elements_by_class_name( 'ui-form-item2' )[index]
+                element.find_element_by_class_name( 'account-display' ).click()
+                element.find_element_by_class_name( 'account-display' ).send_keys( accounts[1] )
+                element.find_element_by_class_name( 'amount' ).click()
+                element.find_element_by_class_name( 'amount' ).send_keys( str(accounts[2]) )
+                element.find_element_by_class_name( 'account-display' ).click()
+                time.sleep( 1 )
+                element.find_element_by_class_name( 'amount' ).click()
 
-            if element.find_element_by_class_name('"ui-form-explain2') != None:
-                element.find_element_by_class_name( 'account-display' ).clear()
-                element.find_element_by_class_name( 'amount' ).clear()
-                return False
+                try:
+                    if self.waitElements(name='account-error', time=1):
+                        element.find_element_by_class_name( 'ico-del' ).click()
+                        time.sleep( 1 )
+                        #element.find_element_by_class_name( 'amount' ).clear()
+                        return False
+                    else:
+                        print( 'fillManyTransfer Success' )
+                        return True
+                except Exception as e:
+                    print('fillManyTransfer Success')
+                    print(e)
+                    return True
             else:
-                return True
+                return False
         except Exception as e:
             print(e)
             return False

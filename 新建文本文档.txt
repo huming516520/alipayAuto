@@ -1,13 +1,33 @@
 
 
 增加收款人 : class="add-pointer"
-关联多个联系人：class="ui-form-explain2">   
-账号金额表：class="ui-form-item2 "    获取这个list 
+关联多个联系人：class="ui-form-explain2">
+账号金额表：class="ui-form-item2 "    获取这个list
 账号输入框：<input class="i-text account-display"
 密码输入框：<input class="i-text i-prize amount"
 总金额：<span id="totalAmount">0.00</span>
 下一步按钮：<div id="submitBtn" class="ui-button ui-button-mblue">
 
+<li class="ui-form-item2    account-error">
+                                          <div class="account-wrapper ui-form-error2">
+                                               <input class="i-text account-display" placeholder="邮箱地址/手机号码" maxlength="64" seed="accountWrapper-iText" smartracker="on">
+                                               <div class="ui-form-explain2">该手机号关联了多个账号，请使用<a href="https://shenghuo.alipay.com:443/send/payment/fill.htm?optEmail=18183567857">向一人付款</a></div>
+                                          </div>
+                                          <div class="amount-wrapper">
+                                               <input class="i-text i-prize amount" placeholder="付款金额" name="amounts" seed="amountWrapper-amounts" smartracker="on" data-temp="">
+                                               <div class="ui-form-explain2"></div>
+                                          </div>
+                                          <a title="删除" seed="fkm_clear_account" class="ico ico-del" style="display: inline-block;"></a>
+                                          <input type="hidden" name="optEmails" value="">
+                                          <input type="hidden" name="realname" value="">
+                                          <input type="hidden" name="optUserIds" value="">
+                                                <div class="tip-angle t-warn">
+                                                <div class="tip-angle-container">
+                                                    <div class="tip-angle-content"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+<div class="account-wrapper ui-form-error2"><input class="i-text account-display" placeholder="邮箱地址/手机号码" maxlength="64" autocomplete="off"><div class="ui-form-explain2">该手机号关联了多个账号，请使用<a href="https://shenghuo.alipay.com:443/send/payment/fill.htm?optEmail=18183567857">向一人付款</a></div></div>
 <div id="submitBtn" class="ui-button ui-button-mblue">
                     <input class="ui-button-text" hidefocus="hidefocus" seed="fkm_button_nextstep_new" type="submit" value="下一步" tabindex="5">
                 </div>
