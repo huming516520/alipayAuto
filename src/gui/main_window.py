@@ -56,8 +56,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.manyAccounts.remove(accounts[i])
                 self.signAccounts.append(accounts[i])
-            self.SetTableViewFromList( self.tableView_many, self.manyAccounts )
-            self.SetTableViewFromList( self.tableView_single, self.signAccounts )
+        self.SetTableViewFromList( self.tableView_many, self.manyAccounts )
+        self.SetTableViewFromList( self.tableView_single, self.signAccounts )
 
 
 

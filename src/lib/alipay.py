@@ -33,18 +33,19 @@ class alipay:
     def fillManyTransfer(self, accounts, index):
         if index >= 20:
             return
+        if self.web.current_url != 'https://shenghuo.alipay.com/transfer/otmpay/fill.htm':
+            self.web.get( 'https://shenghuo.alipay.com/transfer/otmpay/fill.htm' )
+
         if index > 0:
             index = index + 1
         print('fillManyTransfer', accounts, index, len(self.web.find_elements_by_class_name( 'ui-form-item2' )))
         try:
             if self.waitElements( name='ui-form-item2', time=3000 ):
                 elements = self.web.find_elements_by_class_name( 'ui-form-item2' )
-                #if (index + 5) >= len(elements):    #人不够，增加
-                self.addPointer()
+                if (index + 5) >= len(elements):    #人不够，增加
+                    self.addPointer()
                 element = self.web.find_elements_by_class_name( 'ui-form-item2' )[index]
-                element.find_element_by_class_name( 'account-display' ).click()
                 element.find_element_by_class_name( 'account-display' ).send_keys( accounts[1] )
-                element.find_element_by_class_name( 'amount' ).click()
                 element.find_element_by_class_name( 'amount' ).send_keys( str(accounts[2]) )
                 element.find_element_by_class_name( 'account-display' ).click()
                 time.sleep( 1 )
@@ -68,25 +69,6 @@ class alipay:
         except Exception as e:
             print(e)
             return False
-
-    def manyTransfer(self, accounts):
-        self.web.get( 'https://shenghuo.alipay.com/transfer/otmpay/fill.htm' )
-        self.waitElements(name='add-pointer',time=1000)
-        print("开始转账")
-        element = self.web.find_element_by_class_name( 'add-pointer' ) #增加收款人
-
-        for i in range(0,17):
-            print("点击增加收款人")
-            element.click()
-
-        tables = self.web.find_elements_by_class_name( 'ui-form-item2' )
-        print(len(tables))
-        try:
-            for element in tables:
-                element.find_element_by_class_name('account-display').send_keys("123")
-                element.find_element_by_class_name('amount').send_keys(123)
-        except Exception as e:
-            print(e)
 
 
 
